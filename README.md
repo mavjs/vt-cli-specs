@@ -1,6 +1,6 @@
 # Dependencies
 ```mermaid
-graph TD
+graph LR
     golang-github-virustotal-vt --> golang-github-thedevsaddam-gojsonq-2;
     golang-github-virustotal-vt-cli --> golang-github-virustotal-vt;
     golang-github-virustotal-vt-cli --> golang-github-cavaliercoder-grab;
