@@ -2,14 +2,21 @@
 %bcond_without check
 
 # https://github.com/cavaliergopher/grab
-%global owner cavaliergopher
-%global project grab
 %global goipath         github.com/cavaliercoder/grab
 Version:                2.0.0
-%global tag v2.0.0
-%global commit 2c8601de6d9ac140430fd4c9de28509a0b855af5
-%global shortcommit %(c=%{commit}; echo ${c:0:7})
+%global tag             v2.0.0
+%global commit          2c8601de6d9ac140430fd4c9de28509a0b855af5
 
+# REMOVE BEFORE SUBMITTING THIS FOR REVIEW
+# ---
+# New Fedora packages should use %%gometa -f, which makes the package
+# ExclusiveArch to %%golang_arches_future and thus excludes the package from
+# %%ix86. If the new package is needed as a dependency for another package,
+# please consider removing that package from %%ix86 in the same way, instead of
+# building more go packages for i686. If your package is not a leaf package,
+# you'll need to coordinate the removal of the package's dependents first.
+# ---
+# REMOVE BEFORE SUBMITTING THIS FOR REVIEW
 %gometa -f
 
 
@@ -25,14 +32,13 @@ Summary:        A download manager package for Go
 
 License:        BSD-3-Clause
 URL:            %{gourl}
-Source:         https://github.com/%{owner}/%{project}/archive/%{commit}/%{project}-%{shortcommit}.tar.gz
+Source:         %{gosource}
 
 %description %{common_description}
 
 %gopkg
 
 %prep
-%setup -q -n %{project}-%{shortcommit}
 %goprep
 %autopatch -p1
 
