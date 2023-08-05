@@ -32,6 +32,7 @@ Source:         https://github.com/%{owner}/%{project}/archive/%{commit}/%{proje
 %gopkg
 
 %prep
+%setup -q -n %{project}-%{shortcommit}
 %goprep
 %autopatch -p1
 
